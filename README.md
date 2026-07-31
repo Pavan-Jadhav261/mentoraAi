@@ -16,7 +16,6 @@ Mentora AI is composed of several specialized modules:
 - **🧩 SVM Quest (Code Challenge)**: A gamified, interactive sandbox to learn Support Vector Machines (SVM) by playing through the actual training loop and adjusting hyperparameters visually.
 - **📝 Summarizer**: Automatically generate concise summaries from lengthy educational content (e.g., YouTube lectures).
 - **📊 Algorithms Visualization**: Interactive visualizations to help you understand complex data structures and algorithms intuitively.
-- **📄 Resume Matcher** *(In Development)*: Analyze and match your resume against job descriptions.
 - **🗺️ Roadmap** *(In Development)*: Personalized learning paths for your career goals.
 
 ---
@@ -111,8 +110,3 @@ mentora-backup2/
 
 ---
 
-## 🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-This project is licensed under the MIT License.
