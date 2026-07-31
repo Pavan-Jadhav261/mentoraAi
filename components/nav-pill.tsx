@@ -14,6 +14,7 @@ const APP_LINKS = [
   { href: '/code-challenge', label: 'Challenge' },  
   { href: '/ai-interviewer', label: 'Interview' },
   { href: '/smart-editor', label: 'Smart Editor' },
+  { href: '/ai-rag', label: 'AI RAG' },
   // { href: '/resume-matcher', label: 'Resume' },
   // { href: '/roadmap', label: 'Roadmap' },
   // { href: '/dashboard', label: 'Dashboard' },

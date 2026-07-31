@@ -1,0 +1,12 @@
+langchain-ollama
+langchain-chroma
+pymupdf4llm
+langgraph
+streamlit
+requests
+langchain-core
+langchain
+pydantic
+fastapi
+uvicorn
+python-multipart
