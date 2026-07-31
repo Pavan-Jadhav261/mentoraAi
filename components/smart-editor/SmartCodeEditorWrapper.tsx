@@ -17,19 +17,6 @@ const SmartCodeEditor = dynamic(
   }
 );
 
-if (typeof window !== 'undefined') {
-  window.addEventListener('unhandledrejection', (event: PromiseRejectionEvent) => {
-    if (
-      event.reason && 
-      typeof event.reason === 'object' && 
-      event.reason.type === 'cancelation' &&
-      event.reason.msg === 'operation is manually canceled'
-    ) {
-      event.preventDefault();
-    }
-  });
-}
-
 export function SmartCodeEditorWrapper() {
   return <SmartCodeEditor />;
 }

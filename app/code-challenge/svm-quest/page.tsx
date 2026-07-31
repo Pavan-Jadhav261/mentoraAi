@@ -65,7 +65,7 @@ const RAW_HTML = `
     gap:18px;
     align-items:center;
     justify-content:space-between;
-    position:sticky; top:0; z-index:20;
+    position:sticky; top:72px; z-index:20;
     background:rgba(10,14,23,.85);
     backdrop-filter:blur(10px);
   }
@@ -74,9 +74,9 @@ const RAW_HTML = `
     background:rgba(248,245,242,.85);
   }
 
-  #svm-quest-container .brand h1{font-size:1.5rem; margin:0; letter-spacing:.2px;}
+  #svm-quest-container .brand h1{font-size:1.15rem; margin:0; letter-spacing:.2px;}
   #svm-quest-container .brand h1 span{color:var(--glow); text-shadow:0 0 18px rgba(125,211,252,.5);}
-  #svm-quest-container .brand p{margin:2px 0 0; color:var(--muted); font-size:.85rem;}
+  #svm-quest-container .brand p{margin:2px 0 0; color:var(--muted); font-size:.75rem;}
 
   #svm-quest-container .progress-wrap{flex:1; min-width:220px; max-width:420px;}
   #svm-quest-container .progress-label{font-size:.75rem; color:var(--muted); margin-bottom:6px; display:flex; justify-content:space-between;}
@@ -102,7 +102,7 @@ const RAW_HTML = `
   /* ---------- Layout ---------- */
   #svm-quest-container main{
     display:grid;
-    grid-template-columns:1.3fr 1fr;
+    grid-template-columns:1fr 1fr;
     gap:20px;
     padding:20px 28px 60px;
     align-items:start;
@@ -199,7 +199,7 @@ const RAW_HTML = `
   /* ---------- Code panel ---------- */
   #svm-quest-container .code-panel{
     background:#0d1220; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
-    position:sticky; top:100px;
+    position:sticky; top:170px;
   }
   html.light #svm-quest-container .code-panel {
     background: #f9fafb;
@@ -974,7 +974,7 @@ export default function SVMQuestPage() {
   return (
     <div className="flex flex-col min-h-screen relative z-0">
       <NavPill />
-      <div className="flex-1 w-full pt-16">
+      <div className="flex-1 w-full pt-20">
         <div ref={containerRef} />
       </div>
       <SiteFooter />

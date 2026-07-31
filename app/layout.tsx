@@ -23,7 +23,30 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const _addEvent = window.addEventListener;
+              window.addEventListener = function(type, listener, options) {
+                if (type === 'unhandledrejection') {
+                  const originalListener = listener;
+                  listener = function(event) {
+                    if (event.reason && event.reason.msg === 'operation is manually canceled') {
+                      event.preventDefault();
+                      event.stopImmediatePropagation();
+                      return;
+                    }
+                    return originalListener.apply(this, arguments);
+                  };
+                }
+                return _addEvent.call(this, type, listener, options);
+              };
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="mentora-theme">
           <SessionProvider>
