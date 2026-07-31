@@ -16,20 +16,33 @@ export default function AskDoubt({ slug, algorithm, explanation }: { slug: strin
     setLoading(false)
   }, [slug])
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const trimmed = question.trim()
     if (!trimmed || loading) return
     setMessages(current => [...current, { role: 'user', content: trimmed }])
     setQuestion('')
     setLoading(true)
-    window.setTimeout(() => {
-      setMessages(current => [...current, {
-        role: 'assistant',
-        content: `For ${algorithm}, focus on this idea: ${explanation.split('. ')[0]}. To answer “${trimmed}”, trace a tiny example by hand and watch how each step changes the input before moving on.`,
-      }])
+
+    try {
+      const response = await fetch('/api/ask-doubt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: trimmed, algorithm, explanation }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get answer')
+      }
+
+      setMessages(current => [...current, { role: 'assistant', content: data.answer }])
+    } catch (err: any) {
+      setMessages(current => [...current, { role: 'assistant', content: `Error: ${err.message}. Please make sure Ollama is running locally.` }])
+    } finally {
       setLoading(false)
-    }, 700)
+    }
   }
 
   return (

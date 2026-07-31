@@ -351,7 +351,13 @@ const SCRIPT_LOGIC = `
     lines.forEach(i=>{ const el=document.getElementById('cl-'+i); if(el) el.classList.add('active'); });
     if(lines.length){
       const el = document.getElementById('cl-'+lines[Math.floor(lines.length/2)]);
-      if(el) el.scrollIntoView({block:'center', behavior:'smooth'});
+      if(el){
+        const container = document.getElementById('codeBody');
+        if(container){
+          const target = el.offsetTop - container.offsetTop - (container.clientHeight / 2) + (el.clientHeight / 2);
+          container.scrollTo({ top: target, behavior: trainTimer ? 'auto' : 'smooth' });
+        }
+      }
     }
   }
   function setVarPanel(text){ const vp = document.getElementById('varPanel'); if(vp) vp.textContent = text; }
