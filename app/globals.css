@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+
+  /* Brand tokens */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-green: var(--accent-green);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-purple: var(--accent-purple);
+
+  /* shadcn compat */
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--foreground);
+  --color-primary: var(--foreground);
+  --color-primary-foreground: var(--background);
+  --color-secondary: var(--surface);
+  --color-secondary-foreground: var(--foreground);
+  --color-muted: var(--surface);
+  --color-accent: var(--surface);
+  --color-accent-foreground: var(--foreground);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--foreground);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+:root {
+  color-scheme: light;
+  --background: #F8F5F2;
+  --surface: #FFFFFF;
+  --foreground: #111111;
+  --muted-foreground: #6B6B6B;
+  --border: #E5E0DA;
+  --accent-blue: #2951E5;
+  --accent-green: #0E9F6E;
+  --accent-orange: #F2600C;
+  --accent-yellow: #F5B400;
+  --accent-purple: #7C4DFF;
+  --ring: #2951E5;
+  --input: #E5E0DA;
+  --radius: 0.75rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #111113;
+  --surface: #18181B;
+  --foreground: #F8F5F2;
+  --muted-foreground: #A1A1AA;
+  --border: #2A2A2E;
+  --accent-blue: #6C8CFF;
+  --accent-green: #34D399;
+  --accent-orange: #FB923C;
+  --accent-yellow: #FBBF24;
+  --accent-purple: #A78BFA;
+  --ring: #6C8CFF;
+  --input: #2A2A2E;
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    @apply antialiased;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
